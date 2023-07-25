@@ -5,9 +5,12 @@ const SearchBar = ({ query, onSearchQuery }) => {
 
   const onSubmitSearchForm = (e) => {
     e.preventDefault();
+    if (searchInputRef.current.value.trim() === '') {
+      return;
+    }
+
     onSearchQuery(searchInputRef.current.value);
     searchInputRef.current.value = null;
-
   }
   return (
     <form onSubmit={onSubmitSearchForm}>
