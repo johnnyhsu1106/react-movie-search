@@ -1,6 +1,6 @@
 import { useRef } from 'react'
 
-const SearchBar = ({ query, onSearchQuery }) => {
+const SearchBar = ({ onSearchQuery }) => {
   const searchInputRef = useRef();
 
   const onSubmitSearchForm = (e) => {
@@ -12,6 +12,7 @@ const SearchBar = ({ query, onSearchQuery }) => {
     onSearchQuery(searchInputRef.current.value);
     searchInputRef.current.value = null;
   }
+  
   return (
     <form onSubmit={onSubmitSearchForm}>
       <input

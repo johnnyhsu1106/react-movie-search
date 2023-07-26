@@ -14,9 +14,9 @@ const API_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwYWY1MTY5YjBlZjE2OWYyMzJkYmRl
 const App = () => {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
+  const [pageNumber, setPageNumber] = useState(1);
   const [numOfPages, setNumOfPages] = useState();
   const [numOfResults, setNumOfResults] = useState(1);
-  const [pageNumber, setPageNumber] = useState(1);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
@@ -67,38 +67,19 @@ const App = () => {
     setPageNumber(1);
   };
 
-  const handlePrevButtonClick = () => {
-    setPageNumber((prevPageNumber) => {
-      return prevPageNumber - 1 === 1 ? 1 : prevPageNumber - 1;
-    });
-    
-  };
-  const handleNextButtonClick = () => {
-    setPageNumber((prevPageNumber) => {
-      return prevPageNumber + 1 === numOfPages ? numOfPages : prevPageNumber + 1;
-    });
-  };
-
   const handleButtonClick = (increment, lastPageNumber) => {
     setPageNumber((prevPageNumber) => {
       return prevPageNumber + increment === lastPageNumber ? lastPageNumber : prevPageNumber + increment;
     });
   }
 
-  
 
   return (
     <div className='container'>
       <SearchBar
         onSearchQuery={handleSearchQuery}
       />
-
-      <NavButtons
-        pageNumber={pageNumber}
-        numOfPages={numOfPages}
-        onClickNavButton={handleButtonClick}
-      />
-
+      
       <SearchResults
         movies={movies}
         pageNumber={pageNumber}
