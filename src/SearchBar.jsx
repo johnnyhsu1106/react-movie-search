@@ -15,9 +15,10 @@ const SearchBar = ({ query, onSearchQuery }) => {
   return (
     <form onSubmit={onSubmitSearchForm}>
       <input
-        className='search-bar' 
+        className='search-bar'
+        type='text' 
+        placeholder='Search the movie'
         ref={searchInputRef}
-        type='text'
       />
       <button
         className='search-submit-btn btn' 

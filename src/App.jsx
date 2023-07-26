@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react'
 import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
 import NavButtons from './NavButtons';
+import Loading from './Loading';
+import Error from './Error';
 
 import './App.css'
 
@@ -34,7 +36,7 @@ const App = () => {
     fetch(`${API_ENDPOINT}?query=${query}&page=${pageNumber}`, options)
     .then((res) => {
       if (!res.ok) {
-        throw Error('Invalid HTTPS Request');
+        throw new Error('Invalid HTTPS Request');
       }
       return res.json();
 
@@ -87,7 +89,6 @@ const App = () => {
 
   return (
     <div className='container'>
-      <h1>Search Movie</h1>
       <SearchBar
         onSearchQuery={handleSearchQuery}
       />
@@ -105,11 +106,14 @@ const App = () => {
         numOfResults={numOfResults} 
       />
 
-      
-      
-      <div> {isLoading ? 'Loading....' : null} </div>
-      <div> {hasError ? 'Somthing goes wrong' : null} </div>
+      <Loading isLoading={isLoading} />
+      <Error hasError={hasError} />
 
+      <NavButtons 
+        pageNumber={pageNumber}
+        numOfPages={numOfPages}
+        onClickNavButton={handleButtonClick}
+      />
     </div>
   )
 }
