@@ -93,7 +93,7 @@ const App = () => {
         onSearchQuery={handleSearchQuery}
       />
 
-      <NavButtons 
+      <NavButtons
         pageNumber={pageNumber}
         numOfPages={numOfPages}
         onClickNavButton={handleButtonClick}
