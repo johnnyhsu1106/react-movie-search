@@ -22,6 +22,7 @@ button.search-submit-btn {
   background-color: #eee;
   cursor: pointer;
 }
+
 button.search-submit-btn:hover {
   color: #eee;
   background-color: #333;
