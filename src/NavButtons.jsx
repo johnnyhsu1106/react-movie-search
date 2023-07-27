@@ -4,7 +4,6 @@ const NavButtons = ({
   pageNumber, 
   numOfPages,
   onClickNavButton
-
 }) => {
   return (
     <div className='nav-btns'>
