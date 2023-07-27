@@ -1,6 +1,6 @@
 import  Button from './Button';
 
-const NavButtons = ({ 
+const Pagination = ({ 
   pageNumber, 
   numOfPages,
   onClickNavButton
@@ -18,4 +18,4 @@ const NavButtons = ({
   )
 }
 
-export default NavButtons
+export default Pagination

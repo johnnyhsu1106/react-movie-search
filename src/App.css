@@ -46,4 +46,9 @@ button.search-submit-btn:hover {
   color: #333;
   border: 2px solid #666;
   border-radius: 10px;
+  cursor: pointer;
+}
+.btn:hover {
+  color: #eee;
+  background-color: #333;
 }

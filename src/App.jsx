@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 
 import SearchBar from './SearchBar';
 import SearchResults from './SearchResults';
-import NavButtons from './NavButtons';
+import Pagination from './Pagination';
 import Loading from './Loading';
 import Error from './Error';
 
@@ -90,7 +90,7 @@ const App = () => {
       <Loading isLoading={isLoading} />
       <Error hasError={hasError} />
 
-      <NavButtons 
+      <Pagination 
         pageNumber={pageNumber}
         numOfPages={numOfPages}
         onClickNavButton={handleButtonClick}
