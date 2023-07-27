@@ -12,7 +12,7 @@ const SearchBar = ({ onSearchQuery }) => {
     onSearchQuery(searchInputRef.current.value);
     searchInputRef.current.value = null;
   }
-  
+
   return (
     <form onSubmit={onSubmitSearchForm}>
       <input
@@ -23,7 +23,8 @@ const SearchBar = ({ onSearchQuery }) => {
       />
       <button
         className='search-submit-btn btn' 
-        type='submit'> Submit </button>
+        type='submit'> Submit 
+      </button>
     </form>
   
   )

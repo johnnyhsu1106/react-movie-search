@@ -8,7 +8,7 @@ const SearchResults = ({
 }) => {
   return (
     <>
-      <h2> {numOfResults > 1 ? `Search Result(s) ${numOfResults}` : null } </h2>
+      <h2> {numOfResults > 0 ? `Search Result${numOfResults > 1 ? 's': ''} ${numOfResults}` : 'No Result' } </h2>
       { numOfResults !== 0 ? <p> {pageNumber} / {numOfPages} pages </p> : null } 
       
       <MovieList movies={movies} />

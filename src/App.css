@@ -19,6 +19,12 @@
 button.search-submit-btn {
   margin-left: 20px;
   height: 40px;
+  background-color: #eee;
+  cursor: pointer;
+}
+button.search-submit-btn:hover {
+  color: #eee;
+  background-color: #333;
 }
 
 .backdrop {

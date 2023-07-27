@@ -15,8 +15,8 @@ const App = () => {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
   const [pageNumber, setPageNumber] = useState(1);
-  const [numOfPages, setNumOfPages] = useState();
-  const [numOfResults, setNumOfResults] = useState(1);
+  const [numOfPages, setNumOfPages] = useState(1);
+  const [numOfResults, setNumOfResults] = useState(0);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
 
@@ -79,7 +79,7 @@ const App = () => {
       <SearchBar
         onSearchQuery={handleSearchQuery}
       />
-      
+
       <SearchResults
         movies={movies}
         pageNumber={pageNumber}
