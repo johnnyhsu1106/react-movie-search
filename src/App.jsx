@@ -9,7 +9,7 @@ import Error from './Error';
 import './App.css'
 
 const API_ENDPOINT = 'https://api.themoviedb.org/3/search/movie';
-const API_TOKEN = 'eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIwYWY1MTY5YjBlZjE2OWYyMzJkYmRlYjZjOWUxYzRmYyIsInN1YiI6IjY0YmZlNmZjYjMzMTZiMDBlMmU5MjJjNSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.5SIhBQcKY8QnaI3OklqvLo6iq4m29saOvSqiy5FGihI';
+const API_TOKEN = import.meta.env.VITE_MOVIE_API_TOKEN; // import the api token from env.local
 
 const App = () => {
   const [query, setQuery] = useState('');
