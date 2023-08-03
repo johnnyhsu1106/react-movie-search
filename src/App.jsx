@@ -53,6 +53,7 @@ const App = () => {
       if (err.name === 'AbortError') {
         return;
       }
+      setIsLoading(false);
       setHasError(true);
       console.error(err);
     });
