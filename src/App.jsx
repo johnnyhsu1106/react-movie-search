@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
 
-import SearchBar from './SearchBar';
-import SearchResults from './SearchResults';
-import Pagination from './Pagination';
-import Loading from './Loading';
-import Error from './Error';
+import SearchBar from './components/SearchBar/SearchBar';
+import SearchResults from './components/SearchResults/SearchResults';
+import Pagination from './components/Pagination/Pagination';
+import Loading from './components/Loading';
+import Error from './components/Error';
 
 import './App.css'
 

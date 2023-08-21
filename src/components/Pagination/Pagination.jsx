@@ -1,4 +1,4 @@
-import  Button from './Button';
+import  PaginationButton from './PaginationButton';
 
 const Pagination = ({ 
   pageNumber, 
@@ -7,11 +7,11 @@ const Pagination = ({
 }) => {
   return (
     <div className='nav-btns'>
-      <Button
+      <PaginationButton
         onClickButton={ pageNumber === 1 ? null : () => { onClickNavButton(-1, 1) }} 
         text='prev'/>
 
-      <Button
+      <PaginationButton
         onClickButton={ pageNumber === numOfPages ? null : () => { onClickNavButton(1, numOfPages)}} 
         text='next'/>
     </div>

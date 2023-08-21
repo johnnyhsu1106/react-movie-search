@@ -1,4 +1,5 @@
 import MovieList from './MovieList'
+import SearchResultsTitle from './SearchResultsTitle';
 
 const SearchResults = ({
   movies,
@@ -8,9 +9,11 @@ const SearchResults = ({
 }) => {
   return (
     <>
-      <h2> {numOfResults > 0 ? `Search Result${numOfResults > 1 ? 's': ''} ${numOfResults}` : 'No Result' } </h2>
-      { numOfResults !== 0 ? <p> {pageNumber} / {numOfPages} pages </p> : null } 
-      
+      <SearchResultsTitle
+        pageNumber={pageNumber}
+        numOfResults={numOfResults}
+        numOfPages={numOfPages}
+      />
       <MovieList movies={movies} />
     </>
     

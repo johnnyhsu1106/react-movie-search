@@ -23,7 +23,9 @@ const SearchBar = ({ onSearchQuery }) => {
       />
       <button
         className='search-submit-btn btn' 
-        type='submit'> Submit 
+        type='submit'
+      > 
+        Submit 
       </button>
     </form>
   
