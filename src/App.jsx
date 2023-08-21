@@ -72,7 +72,7 @@ const App = () => {
     setPageNumber((prevPageNumber) => {
       return prevPageNumber + increment === lastPageNumber ? lastPageNumber : prevPageNumber + increment;
     });
-  }
+  };
 
 
   return (
