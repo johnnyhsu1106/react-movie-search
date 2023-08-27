@@ -5,9 +5,7 @@ import style from './SearchBar.module.css';
 
 const SearchBar = () => {
   const searchInputRef = useRef();
-  const {
-    handleSearchQuery
-  } = useMovieSearchContext();
+  const { handleSearchQuery } = useMovieSearchContext();
 
   const onSubmitSearchForm = (e) => {
     e.preventDefault();
