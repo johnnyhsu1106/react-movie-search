@@ -1,7 +1,13 @@
 import { useRef } from 'react'
+import { useMovieSearchContext } from '../../context/MovieSearchContext';
+import style from './SearchBar.module.css';
 
-const SearchBar = ({ onSearchQuery }) => {
+
+const SearchBar = () => {
   const searchInputRef = useRef();
+  const {
+    handleSearchQuery
+  } = useMovieSearchContext();
 
   const onSubmitSearchForm = (e) => {
     e.preventDefault();
@@ -9,20 +15,20 @@ const SearchBar = ({ onSearchQuery }) => {
       return;
     }
 
-    onSearchQuery(searchInputRef.current.value);
+    handleSearchQuery(searchInputRef.current.value);
     searchInputRef.current.value = null;
   }
 
   return (
     <form onSubmit={onSubmitSearchForm}>
       <input
-        className='search-bar'
+        className={style['search-bar']}
         type='text' 
         placeholder='Search the movie'
         ref={searchInputRef}
       />
       <button
-        className='search-submit-btn btn' 
+        className={`${style['search-submit-btn']} ${style.btn}`} 
         type='submit'
       > 
         Submit 

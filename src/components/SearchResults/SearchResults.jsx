@@ -1,20 +1,11 @@
 import MovieList from './MovieList'
 import SearchResultsTitle from './SearchResultsTitle';
 
-const SearchResults = ({
-  movies,
-  pageNumber, 
-  numOfResults,
-  numOfPages
-}) => {
+const SearchResults = () => {
   return (
     <>
-      <SearchResultsTitle
-        pageNumber={pageNumber}
-        numOfResults={numOfResults}
-        numOfPages={numOfPages}
-      />
-      <MovieList movies={movies} />
+      <SearchResultsTitle />
+      <MovieList />
     </>
     
   )

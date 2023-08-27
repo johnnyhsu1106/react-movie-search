@@ -1,6 +1,9 @@
 import Movie from './Movie'
+import { useMovieSearchContext } from '../../context/MovieSearchContext';
 
-const MovieList = ( { movies}) => {
+
+const MovieList = () => {
+  const { movies } = useMovieSearchContext();
   // Sort movies based on popularity
   movies.sort((movie1, movie2) => {
     return movie2.popularity - movie1.popularity;

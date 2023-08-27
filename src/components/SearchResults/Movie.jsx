@@ -1,4 +1,6 @@
 const BACKDROP_BASE_URL = 'https://www.themoviedb.org/t/p/original';
+import style from './Movie.module.css';
+
 
 const Movie = ({ movie }) => {
   const {
@@ -9,7 +11,7 @@ const Movie = ({ movie }) => {
   } = movie; 
   
   const imgSrc = backdrop_path !== null ? `${BACKDROP_BASE_URL}${backdrop_path}` : null;
-  const Image = imgSrc ? <img className='backdrop' src={imgSrc} alt={title} /> : <i>sorry, no image</i>
+  const Image = imgSrc ? <img className={style.backdrop} src={imgSrc} alt={title} /> : <i>sorry, no image</i>
   
   return (
     <div>
