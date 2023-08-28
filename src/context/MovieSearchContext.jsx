@@ -12,13 +12,17 @@ const useMovieSearchContext = () => {
 const MovieSearchProvider = ({ children }) => {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
-  const [pageNumber, setPageNumber] = useState(1);
-  const [numOfPages, setNumOfPages] = useState(1);
-  const [numOfResults, setNumOfResults] = useState(0);
-  const [isLoading, setIsLoading] = useState(true);
+  const [pageNumber, setPageNumber] = useState(null);
+  const [numOfPages, setNumOfPages] = useState(0);
+  const [numOfResults, setNumOfResults] = useState(null);
+  const [isLoading, setIsLoading] = useState(false);
   const [hasError, setHasError] = useState(false);
 
   useEffect(() => {
+    if (pageNumber === null) {
+      return;
+    }
+
     setIsLoading(true);
     setHasError(false);
 
@@ -31,6 +35,7 @@ const MovieSearchProvider = ({ children }) => {
       },
       signal: controller.signal
     };
+
     fetch(`${API_ENDPOINT}?query=${query}&page=${pageNumber}`, options)
     .then((res) => {
       if (!res.ok) {
@@ -44,26 +49,32 @@ const MovieSearchProvider = ({ children }) => {
       setIsLoading(false);
       setNumOfResults(total_results);
       setNumOfPages(total_pages);
-
       setMovies(results.map((result) => { return result }));
 
     }).catch((err) => {
       if (err.name === 'AbortError') {
         return;
       }
-      setIsLoading(false);
       setHasError(true);
-      console.error(err);
+
+    }).finally(() => {
+      setIsLoading(false);
     });
+
     return () => {
       controller.abort();
     }
+
   }, [query, pageNumber]);
 
 
   const handleSearchQuery = (query) => {
     setQuery(query);
     setPageNumber(1);
+  };
+
+  const handlePageNumClick = (pageNumber) => {
+    setPageNumber(pageNumber);
   };
 
   const handleButtonClick = (increment, lastPageNumber) => {
@@ -82,7 +93,8 @@ const MovieSearchProvider = ({ children }) => {
     isLoading,
     hasError,
     handleSearchQuery,
-    handleButtonClick
+    handleButtonClick,
+    handlePageNumClick
   };
 
 

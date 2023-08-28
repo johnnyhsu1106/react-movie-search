@@ -1,6 +1,6 @@
 import Movie from './Movie'
 import { useMovieSearchContext } from '../../context/MovieSearchContext';
-
+import style from './SearchResults.module.css';
 
 const MovieList = () => {
   const { movies } = useMovieSearchContext();
@@ -9,7 +9,7 @@ const MovieList = () => {
     return movie2.popularity - movie1.popularity;
   });
   return (
-    <div className='movie-list'>
+    <div className={style['movie-list']}>
       {movies.map((movie) => {
         const { id } = movie;
           return <Movie key={id} movie={movie} />

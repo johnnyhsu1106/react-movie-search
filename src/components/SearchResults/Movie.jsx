@@ -1,5 +1,5 @@
 const BACKDROP_BASE_URL = 'https://www.themoviedb.org/t/p/original';
-import style from './Movie.module.css';
+import style from './SearchResults.module.css';
 
 
 const Movie = ({ movie }) => {
@@ -14,7 +14,7 @@ const Movie = ({ movie }) => {
   const Image = imgSrc ? <img className={style.backdrop} src={imgSrc} alt={title} /> : <i>sorry, no image</i>
   
   return (
-    <div className='movie'>
+    <div className={style.movie}>
       <h3>{title}</h3>
       <p> Release Date:  <time dateTime={release_date}>{release_date}</time></p>
       { Image }

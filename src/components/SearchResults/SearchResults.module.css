@@ -1,0 +1,25 @@
+.movie-list {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 20px;
+  justify-content: center ;
+  align-items: flex-start;
+}
+
+.movie {
+  width: 18%;
+}
+
+.backdrop {
+  width: 100%;
+  height: auto;
+}
+
+.page-numbers {
+  display: flex;
+  gap: 20px;
+  flex-wrap: wrap;
+  cursor: pointer;
+
+}
