@@ -7,19 +7,17 @@ const Movie = ({ movie }) => {
     title, 
     backdrop_path, 
     release_date, 
-    overview 
+    // overview 
   } = movie; 
   
   const imgSrc = backdrop_path !== null ? `${BACKDROP_BASE_URL}${backdrop_path}` : null;
-  const Image = imgSrc ? <img className={style.backdrop} src={imgSrc} alt={title} /> : <i>sorry, no image</i>
+  const Image = imgSrc ? <img className={style.backdrop} src={imgSrc} alt={title} /> : <i className={style['no-image']}>no image</i>
   
   return (
     <div className={style.movie}>
-      <h3>{title}</h3>
-      <p> Release Date:  <time dateTime={release_date}>{release_date}</time></p>
+      <h3 className={style.title}>{title}</h3>
+      <p className={style.date}> Release Date:  <time dateTime={release_date}>{release_date}</time></p>
       { Image }
-      <p> {overview} </p>
-
     </div>
   );
 }
