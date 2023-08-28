@@ -14,11 +14,12 @@ const Movie = ({ movie }) => {
   const Image = imgSrc ? <img className={style.backdrop} src={imgSrc} alt={title} /> : <i>sorry, no image</i>
   
   return (
-    <div>
+    <div className='movie'>
       <h3>{title}</h3>
       <p> Release Date:  <time dateTime={release_date}>{release_date}</time></p>
-      <p> {overview} </p>
       { Image }
+      <p> {overview} </p>
+
     </div>
   );
 }

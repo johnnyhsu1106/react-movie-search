@@ -9,7 +9,7 @@ const MovieList = () => {
     return movie2.popularity - movie1.popularity;
   });
   return (
-    <div>
+    <div className='movie-list'>
       {movies.map((movie) => {
         const { id } = movie;
           return <Movie key={id} movie={movie} />

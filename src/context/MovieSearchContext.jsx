@@ -70,6 +70,7 @@ const MovieSearchProvider = ({ children }) => {
     setPageNumber((prevPageNumber) => {
       return prevPageNumber + increment === lastPageNumber ? lastPageNumber : prevPageNumber + increment;
     });
+    window.scrollTo(0, 0);
   };
 
   const context = {
