@@ -1,11 +1,7 @@
-import { useMovieSearchContext } from '../context/MovieSearchContext';
-
-
 const Error = () => {
-  const { hasError } = useMovieSearchContext();
-  
+ 
   return (
-    hasError ? <div>Somthing goes wrong</div> : null
+    <div>Somthing goes wrong</div>
   )
 }
 
