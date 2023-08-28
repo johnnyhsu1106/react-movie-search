@@ -1,12 +1,16 @@
-import style from './PaginationButton.module.css'
+import style from './Pagination.module.css'
 
 
 const PaginationButton = ( { 
-  onClickButton, 
-  text 
+  text,
+  onClickButton  
 }) => {
+  if (!onClickButton) {
+    return null
+  }
+
   return (
-    (onClickButton && text) ? <button className={style.btn} onClick={onClickButton}>{text}</button> : null
+    <button className={style.btn} onClick={onClickButton}>{text}</button>
   )
 }
 

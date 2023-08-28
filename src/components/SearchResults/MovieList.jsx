@@ -8,6 +8,7 @@ const MovieList = () => {
   movies.sort((movie1, movie2) => {
     return movie2.popularity - movie1.popularity;
   });
+  
   return (
     <div className={style['movie-list']}>
       {movies.map((movie) => {
