@@ -1,8 +1,9 @@
 import { useState, useEffect, createContext, useContext } from 'react';
 
-
 const API_ENDPOINT = 'https://api.themoviedb.org/3/search/movie';
 const API_TOKEN = import.meta.env.VITE_MOVIE_API_TOKEN; // import the api token from env.local
+const PAGE_PER_BUCKET = 10;
+
 const MovieSearchContext = createContext({});
 
 const useMovieSearchContext = () => {
@@ -12,19 +13,22 @@ const useMovieSearchContext = () => {
 const MovieSearchProvider = ({ children }) => {
   const [query, setQuery] = useState('');
   const [movies, setMovies] = useState([]);
-  const [pageNumber, setPageNumber] = useState(null);
-  const [numOfPages, setNumOfPages] = useState(0);
-  const [numOfResults, setNumOfResults] = useState(null);
+  const [currPageNum, setCurrPageNum] = useState(null);
+  const [numOfPages, setNumOfPages] = useState(null);
+  const [numOfResults, setNumOfResults] = useState(undefined);
   const [isLoading, setIsLoading] = useState(false);
-  const [hasError, setHasError] = useState(false);
+  const [isError, setIsError] = useState(false);
+
+  const currBucket = currPageNum !== null ? Math.floor((currPageNum - 1) / PAGE_PER_BUCKET) : null;
+  const lastBucket = numOfPages !== 0 ? Math.floor((numOfPages - 1) / PAGE_PER_BUCKET) : null;
 
   useEffect(() => {
-    if (pageNumber === null) {
+    if (currPageNum === null) {
       return;
     }
 
     setIsLoading(true);
-    setHasError(false);
+    setIsError(false);
 
     const controller = new AbortController();
     const options  = {
@@ -36,7 +40,7 @@ const MovieSearchProvider = ({ children }) => {
       signal: controller.signal
     };
 
-    fetch(`${API_ENDPOINT}?query=${query}&page=${pageNumber}`, options)
+    fetch(`${API_ENDPOINT}?query=${query}&page=${currPageNum}`, options)
     .then((res) => {
       if (!res.ok) {
         throw new Error('Invalid HTTPS Request');
@@ -55,7 +59,7 @@ const MovieSearchProvider = ({ children }) => {
       if (err.name === 'AbortError') {
         return;
       }
-      setHasError(true);
+      setIsError(true);
 
     }).finally(() => {
       setIsLoading(false);
@@ -65,38 +69,39 @@ const MovieSearchProvider = ({ children }) => {
       controller.abort();
     }
 
-  }, [query, pageNumber]);
+  }, [query, currPageNum]);
 
 
   const handleSearchQuery = (query) => {
     setQuery(query);
-    setPageNumber(1);
+    setCurrPageNum(1);
   };
 
-  const handlePageNumClick = (pageNumber) => {
-    setPageNumber(pageNumber);
+  const handlePageNumClick = (pageNum) => {
+    setCurrPageNum(pageNum);
   };
-
-  const handleButtonClick = (increment, lastPageNumber) => {
-    setPageNumber((prevPageNumber) => {
-      return prevPageNumber + increment === lastPageNumber ? lastPageNumber : prevPageNumber + increment;
+  
+  const handleNavButtonClick = (increment, lastpageNum) => {
+    setCurrPageNum((prevpageNum) => {
+      return prevpageNum + increment === lastpageNum ? lastpageNum : prevpageNum + increment;
     });
-    window.scrollTo(0, 0);
   };
 
   const context = {
     query,
     movies,
-    pageNumber, 
+    currPageNum,
+    currBucket,
+    lastBucket,
     numOfPages,
     numOfResults,
     isLoading,
-    hasError,
+    isError,
+    PAGE_PER_BUCKET,
     handleSearchQuery,
-    handleButtonClick,
+    handleNavButtonClick,
     handlePageNumClick
   };
-
 
   return (
     <MovieSearchContext.Provider value={context}>

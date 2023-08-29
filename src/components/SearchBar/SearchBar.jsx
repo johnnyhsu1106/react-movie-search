@@ -28,8 +28,8 @@ const SearchBar = () => {
         ref={searchInputRef}
       />
       <button
-        className={`${style['search-submit-btn']} ${style.btn}`} 
         type='submit'
+        className={`${style['search-submit-btn']} ${style.btn}`} 
       > 
         Submit 
       </button>

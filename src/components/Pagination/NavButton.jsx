@@ -1,17 +1,13 @@
 import style from './Pagination.module.css'
 
 
-const PaginationButton = ( { 
+const NavButton = ( { 
   text,
   onClickButton  
 }) => {
-  if (!onClickButton) {
-    return null
-  }
-
   return (
     <button className={style.btn} onClick={onClickButton}>{text}</button>
   )
 }
 
-export default PaginationButton;
+export default NavButton;
