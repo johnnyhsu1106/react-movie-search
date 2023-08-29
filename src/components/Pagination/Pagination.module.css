@@ -1,11 +1,11 @@
 .nav-btns {
   display: flex;
-  width: 100%;
-  gap: 10px;
+  width: auto;
+  gap: 20px;
 }
 
 .btn {
-  margin: 10px 0;
+  margin: 10px auto;
   padding: 5px;
   width: 100px;
   font-size: 18px;

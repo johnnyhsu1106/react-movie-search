@@ -6,10 +6,9 @@ Checkout this repo, install dependencies, then start the gulp process with the f
 > npm install
 > npm dev
 ```
+![image](https://github.com/johnnyhsu1106/react-movie-search-with-react-query/assets/18588513/c9477177-39f2-4cc8-9c03-b8f51a52e7e0)
+![image](https://github.com/johnnyhsu1106/react-movie-search-with-react-query/assets/18588513/8e7c865a-bb37-4f9e-b322-66d63271ce80)
 
-![image](https://github.com/johnnyhsu1106/react-search-movie-tool/assets/18588513/7276a1e2-b2c1-43f0-9e7a-0b4178aa6f70)
 
-
-![image](https://github.com/johnnyhsu1106/react-search-movie-tool/assets/18588513/3a3c0a88-45e3-4117-bcf8-a43bdec8e5b5)
 
 
