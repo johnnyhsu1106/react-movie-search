@@ -10,7 +10,6 @@ import './App.css'
 const App = () => {
 
   return (
-
     <MovieSearchProvider>
       <Container>
         <SearchBar />
@@ -19,7 +18,6 @@ const App = () => {
         <Movies />
       </Container>
     </MovieSearchProvider>
-
   );
 }
 export default App;

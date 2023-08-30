@@ -6,13 +6,13 @@ import style from './Pagination.module.css';
 
 const Pagination = () => {
   const {
-    movies,
     currPageNum,
     numOfPages,
+    numOfResults,
     handleNavButtonClick
   } = useMovieSearchContext();
 
-  if (movies.length === 0) {
+  if (numOfResults === undefined || numOfResults === 0) {
     return null;
   }
 

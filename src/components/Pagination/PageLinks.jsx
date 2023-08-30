@@ -14,10 +14,6 @@ const PageLinks = () => {
     handlePageNumClick
   } = useMovieSearchContext();
 
-  if (numOfResults === null) {
-    return null;
-  }
-
   const startPageNum = currBucket * PAGE_PER_BUCKET + 1;
   const endPageNum = (currBucket + 1) * PAGE_PER_BUCKET > numOfPages ? numOfPages : (currBucket + 1) * PAGE_PER_BUCKET;
   const prevBucketPageNum = startPageNum - PAGE_PER_BUCKET < 0 ? 0 : startPageNum - PAGE_PER_BUCKET;
@@ -38,6 +34,7 @@ const PageLinks = () => {
         </span>
       );
     }
+
     return PageNums;
   }
 
