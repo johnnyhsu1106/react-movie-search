@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "site": "react-movie-search-by-jh",
     "public": "dist",
     "ignore": [
       "firebase.json",

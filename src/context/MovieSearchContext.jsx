@@ -84,7 +84,7 @@ const MovieSearchProvider = ({ children }) => {
     });
   };
 
-  const context = {
+  const value = {
     query,
     movies,
     currPageNum,
@@ -101,7 +101,7 @@ const MovieSearchProvider = ({ children }) => {
   };
 
   return (
-    <MovieSearchContext.Provider value={context}>
+    <MovieSearchContext.Provider value={value}>
       {children}
     </MovieSearchContext.Provider>
   )
