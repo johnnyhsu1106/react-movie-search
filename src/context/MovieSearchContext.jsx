@@ -7,7 +7,12 @@ const PAGE_PER_BUCKET = 10;
 const MovieSearchContext = createContext({});
 
 const useMovieSearchContext = () => {
-  return useContext(MovieSearchContext);
+  const movieSearchContext = useContext(MovieSearchContext);
+  if (movieSearchContext === undefined) {
+    throw new Error('useMovieSearchContext must be used within a MovieSearchProvider');
+
+  }
+  return movieSearchContext; 
 };
 
 const MovieSearchProvider = ({ children }) => {
