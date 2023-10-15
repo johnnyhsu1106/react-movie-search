@@ -14,8 +14,8 @@ const PageLinks = () => {
     handlePageNumClick
   } = useMovieSearchContext();
 
-  const startPageNum = currBucket * PAGE_PER_BUCKET + 1;
-  const endPageNum = (currBucket + 1) * PAGE_PER_BUCKET > numOfPages ? numOfPages : (currBucket + 1) * PAGE_PER_BUCKET;
+  const startPageNum = (currBucket - 1) * PAGE_PER_BUCKET + 1;
+  const endPageNum = currBucket * PAGE_PER_BUCKET > numOfPages ? numOfPages : currBucket * PAGE_PER_BUCKET;
   const prevBucketPageNum = startPageNum - PAGE_PER_BUCKET < 0 ? 0 : startPageNum - PAGE_PER_BUCKET;
   const nextBucketPageNum = endPageNum + 1 > numOfPages ? numOfPages : endPageNum + 1
 
@@ -41,13 +41,13 @@ const PageLinks = () => {
   return (
     <>
       <div className={style['page-numbers']}>
-        {currBucket !== 0 && 
+        {currBucket > 1 && 
         <NavLink text='prev' onNavLinkClick={() => {handlePageNumClick(prevBucketPageNum)}} />
         }
 
         <PageNums />
 
-        {currBucket !== lastBucket && 
+        {currBucket < lastBucket && 
         <NavLink text='next' onNavLinkClick={() => {handlePageNumClick(nextBucketPageNum)}} />
         }
       </div>

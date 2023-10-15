@@ -10,7 +10,6 @@ const Movie = ({ movie }) => {
     release_date
   } = movie; 
   
-
   const imgSrc = backdrop_path !== null ? `${BACKDROP_BASE_URL}${backdrop_path}` : notAvailableImage;
   
   return (
@@ -20,6 +19,6 @@ const Movie = ({ movie }) => {
       <img className={style.backdrop} src={imgSrc} alt={title} />
     </div>
   );
-}
+};
 
 export default Movie;

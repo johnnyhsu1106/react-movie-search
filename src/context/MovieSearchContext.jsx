@@ -4,7 +4,7 @@ const API_ENDPOINT = 'https://api.themoviedb.org/3/search/movie';
 const API_TOKEN = import.meta.env.VITE_MOVIE_API_TOKEN; // import the api token from env.local
 const PAGE_PER_BUCKET = 10;
 
-const MovieSearchContext = createContext({});
+const MovieSearchContext = createContext(undefined);
 
 const useMovieSearchContext = () => {
   const movieSearchContext = useContext(MovieSearchContext);
@@ -17,19 +17,19 @@ const useMovieSearchContext = () => {
 
 const MovieSearchProvider = ({ children }) => {
   const [query, setQuery] = useState('');
-  const [currPageNum, setCurrPageNum] = useState(null);
+  const [currPageNum, setCurrPageNum] = useState(0);
   const [data, setData] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [isError, setIsError] = useState(false);
 
-  const numOfPages = data?.total_pages;
-  const numOfResults = data?.total_results;
+  const numOfPages = data?.total_pages || 0;
+  const numOfResults = data?.total_results || 0;
   const movies = data?.results?.map((result) => { return result }) || [];
-  const currBucket = currPageNum !== null ? Math.floor((currPageNum - 1) / PAGE_PER_BUCKET) : null;
-  const lastBucket = numOfPages !== undefined ? Math.floor((numOfPages - 1) / PAGE_PER_BUCKET) : null;
+  const currBucket = currPageNum !== 0 ? Math.floor((currPageNum - 1) / PAGE_PER_BUCKET) + 1 : 0;
+  const lastBucket = numOfPages !== 0 ? Math.floor((numOfPages - 1) / PAGE_PER_BUCKET) + 1 : 0;
 
   useEffect(() => {
-    if (currPageNum === null) {
+    if (currPageNum === 0) {
       return;
     }
 

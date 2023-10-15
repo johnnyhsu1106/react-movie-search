@@ -12,7 +12,6 @@ const Movies = () => {
     movies 
   } = useMovieSearchContext();
 
-
   if (isLoading) {
     return <Loading />;
   } 
