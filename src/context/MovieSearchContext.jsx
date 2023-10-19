@@ -23,7 +23,7 @@ const MovieSearchProvider = ({ children }) => {
   const [isError, setIsError] = useState(false);
 
   const numOfPages = data?.total_pages || 0;
-  const numOfResults = data?.total_results || 0;
+  const numOfResults = data?.total_results;
   const movies = data?.results?.map((result) => { return result }) || [];
   const currBucket = currPageNum !== 0 ? Math.floor((currPageNum - 1) / PAGE_PER_BUCKET) + 1 : 0;
   const lastBucket = numOfPages !== 0 ? Math.floor((numOfPages - 1) / PAGE_PER_BUCKET) + 1 : 0;

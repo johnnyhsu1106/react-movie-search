@@ -10,7 +10,6 @@ const PageLinks = () => {
     lastBucket,
     PAGE_PER_BUCKET,
     numOfPages,
-    numOfResults, 
     handlePageNumClick
   } = useMovieSearchContext();
 

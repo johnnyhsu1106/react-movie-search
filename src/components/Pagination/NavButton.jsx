@@ -8,6 +8,6 @@ const NavButton = ( {
   return (
     <button className={style.btn} onClick={onClickButton}>{text}</button>
   )
-}
+};
 
 export default NavButton;
